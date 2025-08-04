@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { FaMoon, FaSun, FaFlask } from "react-icons/fa";
+import Link from "next/link"; // Import Link from next/link
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -17,36 +18,36 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <a href="/" className="flex items-center">
-            <FaFlask size={24} className={` ${isDarkMode ? "text-yellow-300" : "text-blue-600"}`} />
-          </a>
-          <a href="/">
+          <Link href="/" className="flex items-center">
+            <FaFlask size={24} className={`${isDarkMode ? "text-yellow-300" : "text-blue-600"}`} />
+          </Link>
+          <Link href="/">
             <span className={`font-medium hover:text-yellow-500 ${
               isDarkMode ? "text-gray-300" : "text-gray-600"
             } transition-colors duration-300`}>
               Fantastic 4
-              </span>
-          </a>
+            </span>
+          </Link>
         </div>
 
         {/* Nav Links */}
         <div className="flex items-center space-x-6">
-          <a
+          <Link
             href="/"
             className={`font-medium hover:text-yellow-500 ${
               isDarkMode ? "text-gray-300" : "text-gray-600"
             } hover:underline transition-colors duration-300`}
           >
             Home
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
             className={`font-medium hover:text-yellow-500 ${
               isDarkMode ? "text-gray-300" : "text-gray-600"
             } hover:underline transition-colors duration-300`}
           >
             About
-          </a>
+          </Link>
 
           {/* Toggle */}
           <button

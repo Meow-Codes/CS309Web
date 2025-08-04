@@ -15,8 +15,8 @@ const teamMembers = [
   {
     name: "KV Modak",
     designation: "Lead Data Engineer",
-    image1: "m1.jpg",
-    image2: `rajini.webp`,
+    image1: "/m1.jpg", // Relative path to public directory
+    image2: "/rajini.webp", // Relative path to public directory
     socials: {
       linkedin: "https://www.linkedin.com/in/kv-modak-45aaa12aa/",
       github: "https://github.com/mod756",
@@ -26,8 +26,8 @@ const teamMembers = [
   {
     name: "Ausula Koustubh",
     designation: "Web Developer",
-    image1: "k1.jpg",
-    image2: "reed_richards.webp",
+    image1: "/k1.jpg", // Relative path to public directory
+    image2: "/reed_richards.webp", // Relative path to public directory
     socials: {
       linkedin: "https://www.linkedin.com/in/koustubhausula/",
       github: "https://github.com/Koustubh-here",
@@ -38,23 +38,13 @@ const teamMembers = [
   {
     name: "Barghav Abhilash B R",
     designation: "Web Developer",
-    image1: "b1.jpg",
-    image2: "ichigo.webp",
+    image1: "/b1.jpg", // Relative path to public directory
+    image2: "/ichigo.webp", // Relative path to public directory
     socials: {
       linkedin: "https://www.linkedin.com/in/barghav-abhilash-b-r-2ab2ba29a/",
       github: "https://github.com/Meow-Codes",
       instagram: "https://x.com/GFLess_Kurrodu",
       twitter: "https://www.instagram.com/abhilash_2557/",
-    },
-  },
-  {
-    name: "Who's that Pokemon?",
-    designation: "Its Pikachu",
-    image1: "https://placehold.co/100x100/E5E7EB/6B7280?text=DM1",
-    image2: "https://placehold.co/100x100/E5E7EB/6B7280?text=DM2",
-    socials: {
-      linkedin: "https://linkedin.com/in/dianamiller",
-      twitter: "https://twitter.com/diana_viz",
     },
   },
 ];
@@ -66,10 +56,10 @@ export default function About() {
     const saved = localStorage.getItem("darkMode");
     if (saved === "true") {
       setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
       setIsDarkMode(false);
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
@@ -78,9 +68,9 @@ export default function About() {
       const newMode = !prev;
       localStorage.setItem("darkMode", newMode.toString());
       if (newMode) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
       }
       return newMode;
     });
@@ -89,7 +79,7 @@ export default function About() {
   return (
     <>
       <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <div className={`min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-200 transition-all`}>
+      <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-200 transition-all">
         <div className="container mx-auto px-6 py-12">
           {/* Header */}
           <div className="text-center mb-16">
@@ -103,10 +93,10 @@ export default function About() {
           </div>
           {/* Project Overview */}
           <div className="mb-16">
-            <div className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-8 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}>
-              <h2 className="text-2xl font-semibold mb-4">
-                Project Overview: Fantastic 4
-              </h2>
+            <div
+              className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-8 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}
+            >
+              <h2 className="text-2xl font-semibold mb-4">Project Overview: Fantastic 4</h2>
               <p className="leading-relaxed">Project Overview Here</p>
               <div className="mt-6 flex flex-wrap justify-around text-center">
                 <div className="p-4">
@@ -126,7 +116,9 @@ export default function About() {
           </div>
           {/* Why We Undertook This Project */}
           <div className="mb-16">
-            <div className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-8 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}>
+            <div
+              className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-8 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}
+            >
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
                 Why We Undertook This Project
               </h2>
@@ -173,7 +165,9 @@ export default function About() {
               Core Analytical Modules
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}>
+              <div
+                className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}
+              >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Data Sourcing & Sampling
                 </h3>
@@ -201,7 +195,9 @@ export default function About() {
                   </li>
                 </ul>
               </div>
-              <div className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}>
+              <div
+                className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}
+              >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Parametric & Non-Parametric Tests
                 </h3>
@@ -229,7 +225,9 @@ export default function About() {
                   </li>
                 </ul>
               </div>
-              <div className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}>
+              <div
+                className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}
+              >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Categorical Data & Goodness of Fit
                 </h3>
@@ -257,7 +255,9 @@ export default function About() {
                   </li>
                 </ul>
               </div>
-              <div className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}>
+              <div
+                className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-6 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}
+              >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Precision in Estimation
                 </h3>
@@ -288,7 +288,9 @@ export default function About() {
           </div>
           {/* Future Enhancements */}
           <div className="mb-16">
-            <div className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-8 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}>
+            <div
+              className={`rounded-lg shadow-sm border ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"} p-8 transition-all duration-300 hover:shadow-lg hover:border-blue-300`}
+            >
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
                 Future Enhancements
               </h2>
@@ -329,7 +331,7 @@ export default function About() {
             </h2>
           </div>
           {/* Cards */}
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
+          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {teamMembers.map((member, idx) => (
               <TeamMemberCard
                 key={idx}

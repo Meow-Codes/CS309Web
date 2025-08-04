@@ -1,6 +1,7 @@
 "use client";
-import React, { useRef, useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
+import React, { useRef, useState, useEffect } from "react";
+import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
+import Image from "next/image"; // Import Image from next/image
 
 type TeamMember = {
   name: string;
@@ -15,7 +16,7 @@ type TeamMember = {
   };
 };
 
-const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode: boolean }) => {
+const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember; isDarkMode: boolean }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -47,15 +48,15 @@ const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode
 
   useEffect(() => {
     if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
     }
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isDragging, startPosition]);
+  }, [isDragging, handleMouseMove]); // Added handleMouseMove to dependency array
 
   const handleImageClick = () => {
     setIsFlipped((prev) => !prev);
@@ -66,28 +67,30 @@ const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode
       ref={cardRef}
       className={`
         rounded-lg shadow-sm border p-5 text-center transition-shadow duration-300 relative
-        ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}
+        ${isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}
         hover:shadow-lg z-10 cursor-grab
       `}
       onMouseDown={handleMouseDown}
       style={{
         transform: `translate(${currentOffset.x}px, ${currentOffset.y}px)`,
-        transition: isDragging ? 'none' : 'transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
-        touchAction: 'none'
+        transition: isDragging ? "none" : "transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+        touchAction: "none",
       }}
     >
       <div
-        className="mb-7 relative w-[120px] h-[120px] mx-auto rounded-full"
-        style={{ perspective: '1000px' }}
+        className="mb-7 relative w-full h-0 pb-[100%] rounded-full overflow-hidden" // Maintains 1:1 aspect ratio
+        style={{ perspective: "1000px" }}
       >
         <div
-          className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] rounded-full"
+          className="absolute top-0 left-0 w-full h-full transition-transform duration-700 [transform-style:preserve-3d] rounded-full"
           style={{ transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
         >
-          <img
+          <Image
             src={member.image1}
             alt={`Front of ${member.name}`}
-            className="absolute w-full h-full rounded-full object-cover border-2 border-gray-200 dark:border-gray-600 cursor-pointer [backface-visibility:hidden]"
+            fill // Replaces layout="fill"
+            style={{ objectFit: "cover" }} // Moves objectFit to style prop
+            className="absolute rounded-full cursor-pointer [backface-visibility:hidden]"
             onClick={handleImageClick}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
@@ -95,12 +98,13 @@ const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode
               target.src = "https://placehold.co/120x120/E5E7EB/6B7280?text=👤";
             }}
           />
-          <img
+          <Image
             src={member.image2}
             alt={`Back of ${member.name}`}
-            className="absolute w-full h-full rounded-full object-cover border-2 border-gray-200 dark:border-gray-600 cursor-pointer [backface-visibility:hidden]"
+            fill // Replaces layout="fill"
+            style={{ objectFit: "cover",  transform: "rotateY(180deg)" }} // Moves objectFit to style prop
+            className="absolute rounded-full cursor-pointer [backface-visibility:hidden]"
             onClick={handleImageClick}
-            style={{ transform: "rotateY(180deg)" }}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.onerror = null;
@@ -123,7 +127,7 @@ const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode
             rel="noopener noreferrer"
             className={`
               p-2 rounded-md transition-colors duration-200
-              ${isDarkMode ? 'text-gray-400 hover:text-blue-400 hover:bg-gray-700' : 'text-gray-500 hover:text-blue-600 hover:bg-blue-50'}
+              ${isDarkMode ? "text-gray-400 hover:text-blue-400 hover:bg-gray-700" : "text-gray-500 hover:text-blue-600 hover:bg-blue-50"}
             `}
             aria-label={`LinkedIn profile of ${member.name}`}
           >
@@ -137,7 +141,7 @@ const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode
             rel="noopener noreferrer"
             className={`
               p-2 rounded-md transition-colors duration-200
-              ${isDarkMode ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700' : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'}
+              ${isDarkMode ? "text-gray-400 hover:text-gray-200 hover:bg-gray-700" : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"}
             `}
             aria-label={`GitHub profile of ${member.name}`}
           >
@@ -151,7 +155,7 @@ const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode
             rel="noopener noreferrer"
             className={`
               p-2 rounded-md transition-colors duration-200
-              ${isDarkMode ? 'text-gray-400 hover:text-blue-300 hover:bg-gray-700' : 'text-gray-500 hover:text-blue-400 hover:bg-blue-50'}
+              ${isDarkMode ? "text-gray-400 hover:text-blue-300 hover:bg-gray-700" : "text-gray-500 hover:text-blue-400 hover:bg-blue-50"}
             `}
             aria-label={`Twitter profile of ${member.name}`}
           >
@@ -165,7 +169,7 @@ const TeamMemberCard = ({ member, isDarkMode }: { member: TeamMember, isDarkMode
             rel="noopener noreferrer"
             className={`
               p-2 rounded-md transition-colors duration-200
-              ${isDarkMode ? 'text-gray-400 hover:text-pink-400 hover:bg-gray-700' : 'text-gray-500 hover:text-pink-500 hover:bg-pink-50'}
+              ${isDarkMode ? "text-gray-400 hover:text-pink-400 hover:bg-gray-700" : "text-gray-500 hover:text-pink-500 hover:bg-pink-50"}
             `}
             aria-label={`Instagram profile of ${member.name}`}
           >
