@@ -38,7 +38,7 @@ const teamMembers = [
   {
     name: "Barghav Abhilash B R",
     designation: "Web Developer",
-    image1: "/b1.jpg", // Relative path to public directory
+    image1: "/b.jpg", // Relative path to public directory
     image2: "/ichigo.webp", // Relative path to public directory
     socials: {
       linkedin: "https://www.linkedin.com/in/barghav-abhilash-b-r-2ab2ba29a/",
