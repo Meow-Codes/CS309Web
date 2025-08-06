@@ -19,7 +19,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <Link href="/" className="flex items-center">
-            <FaFlask size={24} className={`${isDarkMode ? "text-yellow-300" : "text-blue-600"}`} />
+            <FaFlask size={24} className={`${isDarkMode ? "text-yellow-300 transition-colors duration-300" : "text-blue-600 transition-colors duration-300"}`} />
           </Link>
           <Link href="/">
             <span className={`font-medium hover:text-yellow-500 ${

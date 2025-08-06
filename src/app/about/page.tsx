@@ -15,7 +15,7 @@ const teamMembers = [
   {
     name: "KV Modak",
     designation: "Lead Data Engineer",
-    image1: "/m1.jpg", // Relative path to public directory
+    image1: "/m.jpg", // Relative path to public directory
     image2: "/rajini.webp", // Relative path to public directory
     socials: {
       linkedin: "https://www.linkedin.com/in/kv-modak-45aaa12aa/",
@@ -26,7 +26,7 @@ const teamMembers = [
   {
     name: "Ausula Koustubh",
     designation: "Web Developer",
-    image1: "/k11.jpeg", // Relative path to public directory
+    image1: "/k.jpg", // Relative path to public directory
     image2: "/reed_richards.webp", // Relative path to public directory
     socials: {
       linkedin: "https://www.linkedin.com/in/koustubhausula/",
